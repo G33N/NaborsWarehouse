@@ -1,0 +1,7 @@
+{
+  "name": "NaborsWarehouse",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
