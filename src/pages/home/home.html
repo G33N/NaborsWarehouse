@@ -1,17 +1,36 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>
+      Werehouse Scan
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  Scan a barcode to find, add or assign a equipment
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+    If the app don't found a product with the serial scaned the ask should be ask if you want add this product to the
+    sistem
+    or scan again. If serial exist in the database the app ask to you if want assign the product or modify
   </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <h1>
+    <button ion-button color="dark" full (click)="scan()">Start Scan</button>
+  </h1>
+  <h1>
+    <button ion-button color="danger" full (click)="clear()">Clear Serials</button>
+  </h1>
+<ion-card *ngIf="itemFound">
+  <ion-card-header>
+    <h2>Name: $ {{selectedItem.asset}}</h2>
+  </ion-card-header>
+  <ion-card-content>
+    <ul>
+      <li>{{selectedItem.name}}</li>
+      <li>{{selectedItem.description}}</li>
+    </ul>
+  </ion-card-content>
+</ion-card>
+  <ion-label>
+    Comment
+  </ion-label>
 </ion-content>

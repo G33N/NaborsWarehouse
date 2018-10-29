@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+//  PROVIDERS
+import { WarehouseProvider } from './../../providers/warehouse/warehouse';
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'page-contact',
@@ -7,8 +11,13 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
-  constructor(public navCtrl: NavController) {
+  items: any;
 
+  constructor(
+    public navCtrl: NavController,
+    public warehouseProvider: WarehouseProvider
+  ) {
+    this.items = this.warehouseProvider.getItems().valueChanges();
   }
 
 }
