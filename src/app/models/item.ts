@@ -1,5 +1,7 @@
 export interface Item {
-    asset: string,
+    assetTag: string,
+    serialNumber: string,
     description: string,
-    name: string
+    assignedTo: string,
+    assetType: string
 };

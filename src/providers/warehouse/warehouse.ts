@@ -17,7 +17,6 @@ export class WarehouseProvider {
     public fireStore: AngularFirestore
   ) {
     this.itemsCollection = this.fireStore.collection<any>('items');
-    console.log('Hello WarehouseProvider Provider');
   }
 
   /* This method returns a Observable, you need use .valueChanges() to display in ngFor */

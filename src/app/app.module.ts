@@ -24,6 +24,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Toast } from '@ionic-native/toast';
 import { WarehouseProvider } from '../providers/warehouse/warehouse';
+import { AssetTypeProvider } from '../providers/asset-type/asset-type';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { WarehouseProvider } from '../providers/warehouse/warehouse';
     BarcodeScanner,
     Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    WarehouseProvider
+    WarehouseProvider,
+    AssetTypeProvider
   ]
 })
 export class AppModule {}

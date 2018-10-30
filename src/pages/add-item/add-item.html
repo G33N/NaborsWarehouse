@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>add-item</ion-title>
+    <ion-title>Add item</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,16 +17,30 @@
   <form (ngSubmit)="addItem()">
     <ion-item>
       <ion-label>Serial Scanned</ion-label>
-      <ion-input type="text" [(ngModel)]="item.asset" name="asset" readonly></ion-input>
+      <ion-input type="text" [(ngModel)]="item.serialNumber" name="serialNumber"></ion-input>
+      <button ion-button outline item-end icon-only (click)="scanSerialNumber();" type="button">
+        <ion-icon name="barcode"></ion-icon>
+      </button>
     </ion-item>
     <ion-item>
-      <ion-label>Name</ion-label>
-      <ion-input type="text" [(ngModel)]="item.name" name="name"></ion-input>
+      <ion-label>Asset Tag</ion-label>
+      <ion-input type="text" [(ngModel)]="item.assetTag" name="assetTag"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Asset Type</ion-label>
+      <ion-select [(ngModel)]="item.assetType" name="assetTypeName">
+        <ion-option *ngFor="let assetType of assetTypes | async">{{assetType.name}}</ion-option>
+      </ion-select>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Assigned To</ion-label>
+      <ion-input type="text" [(ngModel)]="item.assignedTo" name="assignedTo"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Description</ion-label>
       <ion-textarea [(ngModel)]="item.description" name="description"></ion-textarea>
     </ion-item>
-    <button ion-button type="submit" block>Add Todo</button>
+    <button ion-button type="submit" block>Add item</button>
   </form>
 </ion-content>

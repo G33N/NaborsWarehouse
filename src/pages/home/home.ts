@@ -37,7 +37,6 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WerehousePage');
   }
 
   async scan() {
@@ -113,8 +112,9 @@ export class HomePage {
 
   /* Modal to add a new item */
   presentAddItemModal(scan) {
-    let addItemModal = this.modalCtrl.create(AddItemPage, { scan: scan });
-    addItemModal.present();
+    // let addItemModal = this.modalCtrl.create(AddItemPage, { scan: scan });
+    this.navCtrl.push(AddItemPage, { scan: scan });
+    // addItemModal.present();
   }
 
 }
