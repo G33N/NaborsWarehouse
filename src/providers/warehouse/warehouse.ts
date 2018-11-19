@@ -1,4 +1,3 @@
-import { Result } from './../../../../SatCalc/src/interfaces/result';
 import { Injectable } from '@angular/core';
 // FIRESTORE
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
