@@ -5,11 +5,13 @@ import { HomePage } from './../home/home';
 // PROVIDERS
 import { WarehouseProvider } from '../../providers/warehouse/warehouse';
 import { AssetTypeProvider } from './../../providers/asset-type/asset-type';
+
 // INTERFASES
 import { Item } from './../../app/models/item';
 // IONIC PLUGINS
 import { Toast } from '@ionic-native/toast';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
+import { AngularFirestoreDocument } from 'angularfire2/firestore';
 
 @IonicPage()
 @Component({
@@ -19,7 +21,8 @@ import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-sca
 export class AddItemPage {
 
   item = {} as Item;
-  assetTypes: any;
+  itemDocument: AngularFirestoreDocument;
+  categories: any;
   result: any;
 
   constructor(
@@ -30,17 +33,23 @@ export class AddItemPage {
     public assetTypeProvider: AssetTypeProvider,
     private barcodeScanner: BarcodeScanner
   ) {
-    
-    this.item.assetTag = navParams.get('scan');
-    this.assetTypes = assetTypeProvider.getAssetTypes().valueChanges();
+    this.item.assetTag = navParams.get('scan');    
 
   }
 
   ionViewDidLoad() {
-    
+    // I need wait to the view to insert this.
+    this.categories = this.assetTypeProvider.getAssetTypes().snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    });
   }
 
   addItem() {
+    this.item.category 
     var result = this.warehouseProvider.addItem(this.item);
     if (result) {
       this.toast.show(`The item was added successfully`, '5000', 'bottom').subscribe(
@@ -52,7 +61,12 @@ export class AddItemPage {
   }
 
   goToHome() {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.setRoot(HomePage);
+  }
+
+  getDocument() {
+    this.itemDocument = this.warehouseProvider.getDocByKey('123123');
+    return this.itemDocument;
   }
 
   async scanSerialNumber() {

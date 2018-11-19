@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 // IONIC PLUGINS
 import { Toast } from '@ionic-native/toast';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
@@ -33,7 +33,13 @@ export class HomePage {
     private warehouseProvider: WarehouseProvider,
     public modalCtrl: ModalController
   ) {
-    this.items = this.warehouseProvider.getItems().valueChanges();
+    this.items = this.warehouseProvider.getItems().snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        data.id = a.payload.doc.id;        
+        return data;
+      });
+    });
   }
 
   ionViewDidLoad() {

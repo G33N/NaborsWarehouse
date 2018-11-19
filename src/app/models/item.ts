@@ -3,5 +3,5 @@ export interface Item {
     serialNumber: string,
     description: string,
     assignedTo: string,
-    assetType: string
+    category: string
 };

@@ -1,3 +1,4 @@
+import { Result } from './../../../../SatCalc/src/interfaces/result';
 import { Injectable } from '@angular/core';
 // FIRESTORE
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -5,6 +6,7 @@ import "rxjs/add/observable/interval";
 import "rxjs/add/operator/take";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/bufferCount"
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable()
 export class WarehouseProvider {
@@ -16,11 +18,12 @@ export class WarehouseProvider {
   constructor(
     public fireStore: AngularFirestore
   ) {
-    this.itemsCollection = this.fireStore.collection<any>('items');
+    
   }
 
   /* This method returns a Observable, you need use .valueChanges() to display in ngFor */
   getItems() {
+    this.itemsCollection = this.fireStore.collection<any>('items');
     return this.itemsCollection;
   }
 
@@ -37,6 +40,12 @@ export class WarehouseProvider {
     });
     return this.items;
   }
+
+  getDocByKey(key) {
+    this.itemDocument = this.fireStore.doc(`items/${key}`);
+    return this.itemDocument;
+  }
+
   addItem(item) {
     var result: any;
     result = this.itemsCollection.add(item).then(function () {
@@ -48,4 +57,5 @@ export class WarehouseProvider {
       });
     return result;
   }
+
 }

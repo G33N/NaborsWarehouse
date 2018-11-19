@@ -27,11 +27,10 @@
       <ion-input type="text" [(ngModel)]="item.assetTag" name="assetTag"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Asset Type</ion-label>
-      <ion-select [(ngModel)]="item.assetType" name="assetTypeName">
-        <ion-option *ngFor="let assetType of assetTypes | async">{{assetType.name}}</ion-option>
+      <ion-label>Category</ion-label>
+      <ion-select [(ngModel)]="item.category" name="category">
+        <ion-option *ngFor="let category of categories | async" value="{{category.id}}">{{category.name}}</ion-option>
       </ion-select>
-      <ion-input type="text"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Assigned To</ion-label>

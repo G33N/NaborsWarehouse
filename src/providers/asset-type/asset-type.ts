@@ -16,7 +16,7 @@ export class AssetTypeProvider {
   constructor(
     public fireStore: AngularFirestore
   ) {
-    this.assetsCollection = this.fireStore.collection<any>('assetTypes');
+    this.assetsCollection = this.fireStore.collection<any>('categories');
   }
 
 

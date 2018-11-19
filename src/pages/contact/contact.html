@@ -9,7 +9,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item-sliding *ngFor="let item of items | async">
-      <ion-item (click)="showItem(item.assetTag)">
+      <ion-item>
         <ion-icon name="desktop"></ion-icon>
         <h2>{{item.assetTag}}</h2>
       </ion-item>
@@ -18,7 +18,7 @@
           <ion-icon name="create"></ion-icon>
           update
         </button>
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="deleteDocument(item.id)">
           <ion-icon name="trash"></ion-icon>
           delete
         </button>
