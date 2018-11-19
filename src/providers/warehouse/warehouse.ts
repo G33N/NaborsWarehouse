@@ -5,7 +5,6 @@ import "rxjs/add/observable/interval";
 import "rxjs/add/operator/take";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/bufferCount"
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable()
 export class WarehouseProvider {
