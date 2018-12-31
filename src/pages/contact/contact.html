@@ -14,7 +14,7 @@
         <h2>{{item.assetTag}}</h2>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="updateDocument(item.id)">
           <ion-icon name="create"></ion-icon>
           update
         </button>

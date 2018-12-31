@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 //  PROVIDERS
 import { WarehouseProvider } from './../../providers/warehouse/warehouse';
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
+// PAGES
+import { AddItemPage } from './../add-item/add-item';
 
 
 @Component({
@@ -36,5 +38,10 @@ export class ContactPage {
     this.itemDocument = this.getDocument(key);
     this.itemDocument.delete();
   };
+
+  updateDocument(key) {
+    this.itemDocument = this.getDocument(key);
+    this.navCtrl.push(AddItemPage, { item: this.itemDocument });
+  }
 
 }

@@ -30,7 +30,6 @@ export class WarehouseProvider {
     this.items = this.itemsCollection.snapshotChanges().map(actions => {
       return actions.map(action => {
         const data = action.payload.doc.data();
-        //const id = action.payload.doc.id;
         console.log(data);
 
         return data
