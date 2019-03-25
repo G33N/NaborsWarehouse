@@ -53,7 +53,7 @@ export class HomePage {
         torchOn: true
       }
       this.result = await this.barcodeScanner.scan(options).then((barcodeData) => {
-        this.warehouseProvider.getWhere('asset', barcodeData.text)
+        this.warehouseProvider.getWhere('assetTag', barcodeData.text)
           .subscribe(snapshot => {
           if (snapshot.length == 0) {
             this.selectedItem = {};
