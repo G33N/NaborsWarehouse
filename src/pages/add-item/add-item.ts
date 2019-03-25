@@ -24,7 +24,6 @@ export class AddItemPage {
   itemDocument: AngularFirestoreDocument;
   categories: any;
   result: any;
-  itemKey: any;
 
   constructor(
     public navCtrl: NavController,
@@ -35,7 +34,7 @@ export class AddItemPage {
     private barcodeScanner: BarcodeScanner
   ) {
     this.item.assetTag = navParams.get('scan');
-    this.itemKey = navParams.get('item');
+    this.itemDocument = navParams.get('itemDocument');
   }
 
   ionViewDidLoad() {
@@ -47,14 +46,20 @@ export class AddItemPage {
         return data;
       });
     });
+    
     // Loaditem from params if exist
-    if (this.itemKey.id!=null) {
-      this.itemDocument = this.warehouseProvider.getDocByKey(this.itemKey.id);
+    if (this.itemDocument!=null) {
       this.itemDocument.get().subscribe(doc => {
-        console.log(doc.data);
-      });
-      console.log(this.itemKey.id);
-      
+        var data = doc.data();
+        console.log(data);
+        this.item = {
+          assetTag: data.assetTag,
+          serialNumber: data.serialNumber,
+          description: data.description,
+          assignedTo: data.assignedTo,
+          category: data.category
+        }
+      });      
     }
   }
 
