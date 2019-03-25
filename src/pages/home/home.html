@@ -21,12 +21,11 @@
   </h1>
 <ion-card *ngIf="itemFound">
   <ion-card-header>
-    <h2>Name: $ {{selectedItem.assetTag}}</h2>
+    <h2>Name: $ {{selectedItem.asset}}</h2>
   </ion-card-header>
   <ion-card-content>
     <ul>
-      <li>{{selectedItem.serialNumber}}</li>
-      <li>{{selectedItem.assignedTo}}</li>
+      <li>{{selectedItem.name}}</li>
       <li>{{selectedItem.description}}</li>
     </ul>
   </ion-card-content>
