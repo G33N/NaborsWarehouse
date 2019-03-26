@@ -8,8 +8,8 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="searchItems($event)"></ion-searchbar>
-    <ion-item-sliding *ngFor="let item of items | async">
+    <ion-searchbar [(ngModel)]="searchTerm.assetTag"></ion-searchbar>
+    <ion-item-sliding *ngFor="let item of (items | async | filterBy: searchTerm );">
       <ion-item>
         <ion-icon name="desktop"></ion-icon>
         <h2>{{item.assetTag}}</h2>

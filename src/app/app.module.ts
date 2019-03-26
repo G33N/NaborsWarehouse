@@ -11,6 +11,8 @@ import { AddItemPage } from '../pages/add-item/add-item';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+
 
 // FIREBASE
 import { AngularFireModule } from '@angular/fire';
@@ -42,7 +44,8 @@ import { AssetTypeProvider } from '../providers/asset-type/asset-type';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FilterPipeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
