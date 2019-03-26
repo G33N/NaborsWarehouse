@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import "rxjs/add/observable/interval";
 import "rxjs/add/operator/take";
 import "rxjs/add/operator/map";
-import "rxjs/add/operator/bufferCount"
+import "rxjs/add/operator/bufferCount";
 
 @Injectable()
 export class WarehouseProvider {
@@ -45,6 +45,11 @@ export class WarehouseProvider {
 
   addItem(item) {
     var result: any;
+    item = {
+      name: 'asas',
+      description: 'asdasd',
+      category: this.fireStore.doc(`categories/${item.category}`)  
+    }
     result = this.itemsCollection.add(item).then(function () {
       return true;
     })

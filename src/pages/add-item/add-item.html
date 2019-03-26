@@ -40,6 +40,7 @@
       <ion-label>Description</ion-label>
       <ion-textarea [(ngModel)]="item.description" name="description"></ion-textarea>
     </ion-item>
-    <button ion-button type="submit" block>Add item</button>
+    <button *ngIf="!itemDocument" ion-button type="submit" block>Add item</button>
+    <button *ngIf="itemDocument" ion-button color="success" type="submit" block>Save</button>
   </form>
 </ion-content>

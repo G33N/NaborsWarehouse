@@ -50,7 +50,8 @@ export class HomePage {
     try {
       const options: BarcodeScannerOptions = {
         prompt: 'Point your camera at a barcode',
-        torchOn: true
+        torchOn: false,
+        showTorchButton: true
       }
       this.result = await this.barcodeScanner.scan(options).then((barcodeData) => {
         this.warehouseProvider.getWhere('assetTag', barcodeData.text)

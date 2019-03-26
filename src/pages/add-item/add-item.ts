@@ -64,7 +64,6 @@ export class AddItemPage {
   }
 
   addItem() {
-    this.item.category 
     var result = this.warehouseProvider.addItem(this.item);
     if (result) {
       this.toast.show(`The item was added successfully`, '5000', 'bottom').subscribe(
