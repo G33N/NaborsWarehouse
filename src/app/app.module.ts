@@ -8,6 +8,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AddItemPage } from '../pages/add-item/add-item';
+import { PlacePage } from './../pages/place/place';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,7 +37,8 @@ import { AssetTypeProvider } from '../providers/asset-type/asset-type';
     ContactPage,
     HomePage,
     TabsPage,
-    AddItemPage
+    AddItemPage,
+    PlacePage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { AssetTypeProvider } from '../providers/asset-type/asset-type';
     ContactPage,
     HomePage,
     TabsPage,
-    AddItemPage
+    AddItemPage,
+    PlacePage
   ],
   providers: [
     StatusBar,
